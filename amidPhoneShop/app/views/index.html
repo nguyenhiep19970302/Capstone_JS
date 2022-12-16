@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quản lý sản phẩm</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#">Action 1</a>
+              <a class="dropdown-item" href="#">Action 2</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="display-4 my-4">
+      Quản lý shop sản phẩm điện thoại
+    </header>
+    <!-- Phan tab menu -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#DanhSachNguoiDung" role="tab" data-toggle="tab">Danh sách sản phẩm</a>
+      </li>
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#ThongKe" role="tab" data-toggle="tab">Thống kê</a>
+      </li>
+    </ul>
+    <br />
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!--Danh sách người dùng -->
+      <div role="tabpanel" class="tab-pane in active" id="DanhSachNguoiDung">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- BEGIN BUTTOM THÊM MỚI -->
+            <button id="btnThemSanPham" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-plus mr-1"></i>
+              Thêm Mới
+            </button>
+            <!-- END BUTTON THÊM MỚI -->
+          </div>
+          <div class="col-md-4">
+            <!-- BEGIN TÌM KIẾM -->
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Nhập từ khóa" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" />
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+            <!-- END TÌM KIẾM -->
+          </div>
+        </div>
+        <div class="clear-fix"></div>
+        <div class="tblNguoiDung" id="tblNguoiDung">
+          <!-- BEGIN TABLE NGƯỜI DÙNG -->
+          <table class="table table-bordered">
+            <thead>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Action</th>
+            </thead>
+            <tbody id="tblDanhSachSanPham"></tbody>
+          </table>
+          <!-- END TABLE NGƯỜI DÙNG -->
+        </div>
+        <br />
+      </div>
+      <!-- Kết thúc danh sách người dùng -->
+      <!-- Danh sách khóa học -->
+      <div role="tabpanel" class="tab-pane fade" id="DanhSachKhoaHoc">
+        <span>Đang cập nhật...</span>
+      </div>
+      <!-- Kết thúc danh sách khóa học -->
+      <!-- Thống kê -->
+      <div role="tabpanel" class="tab-pane fade" id="ThongKe">
+        <span>Đang cập nhật...</span>
+      </div>
+      <!-- Kết thúc thống kê -->
+    </div>
+
+    <!--KetThuc Tabmenu-->
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Id</label>
+              <input disabled id="idProduce" class="form-control" placeholder="Nhập vào Id" />
+              <span class="sp-thongbao" id=""></span>
+            </div>
+            <div class="form-group">
+              <label>Tên sản phẩm</label>
+              <input id="NameProduce" class="form-control" placeholder="Nhập vào tên sản phẩm" />
+              <span class="sp-thongbao" id="tbNameSP"></span>
+            </div>
+            <div class="form-group">
+              <label for="">Loại sản phẩm: </label>
+              <select class="form-control" id="typeProduce">
+                <option>Chọn loại sản phẩm</option>
+                <option value="iphone">iphone</option>
+                <option value="Samsung">Samsung</option>
+              </select>
+              <span class="sp-thongbao" id="tbLoaiSP"></span>
+            </div>
+            <div class="form-group">
+              <label>Camera sau</label>
+              <input id="backCameraProduce" class="form-control" placeholder="Nhập vào kiểu camera sau" />
+              <span class="sp-thongbao" id="tbBackCamera"></span>
+            </div>
+            <div class="form-group">
+              <label>Camera trước</label>
+              <input id="frontCameraProduce" class="form-control" placeholder="Nhập vào kiểu camera trước" />
+              <span class="sp-thongbao" id="tbfrontCamera"></span>
+            </div>
+            <div class="form-group">
+              <label>Độ phẩn giải màn hình</label>
+              <input id="screenProduce" class="form-control" placeholder="Nhập vào Độ phân giải màn hình" />
+              <span class="sp-thongbao" id="tbScreen"></span>
+            </div>
+            <div class="form-group">
+              <label>Giá sản phẩm</label>
+              <input id="PriceProduce" class="form-control" placeholder="Nhập vào giá sản phảm" />
+              <span class="sp-thongbao" id="tbPrice"></span>
+            </div>
+            <div class="form-group">
+              <label>Link hình ảnh</label>
+              <input id="imgProduce" class="form-control" placeholder="URl hình ảnh" />
+              <span class="sp-thongbao" id="tbImg"></span>
+            </div>
+
+            <div class="form-group">
+              <label>Mô tả</label>
+              <textarea id="descProduce" class="form-control" placeholder="Nhập vào mô tả"></textarea>
+              <span class="sp-thongbao" id="tbDesc"></span>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-warning" id="btnCapNhat">Cập Nhật</button>
+            <button type="button" class="btn btn-warning" id="btnThemMon">Thêm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="container"></div>
+  <style>
+    #container {
+      min-width: 310px;
+      max-width: 800px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .sp-thongbao {
+      color: red;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <!-- Axios -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+    integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="./../controllers/main.js"></script>
+</body>
+
+</html>
