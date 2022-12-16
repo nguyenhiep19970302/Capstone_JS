@@ -14,9 +14,9 @@ const getListProduces = () => {
 }
 getListProduces();
 const renderHTML = dataList => {
-    
+
     const result = dataList.reduce((content, produce, index) => {
-        return content +=`
+        return content += `
         <tr>
         <td scope="row">${index + 1}</td>
         <td class="product-name">${produce.name}</td>
@@ -51,7 +51,7 @@ const getValueIput = (isAdd) => {
     let isFlag = true;
     if (isAdd) {
         isFlag &= validation.valicationCheck(NameProduce, "tbNameSP", "(*)Vui lòng nhập thông tin")
-        isFlag &= validation.selectionCheck("typeProduce","tbLoaiSP","(*)Vui lòng chọn sản phẩm")
+        isFlag &= validation.selectionCheck("typeProduce", "tbLoaiSP", "(*)Vui lòng chọn sản phẩm")
         isFlag &= validation.valicationCheck(backCameraProduce, "tbBackCamera", "(*)Vui lòng nhập thông tin")
         isFlag &= validation.valicationCheck(frontCameraProduce, "tbfrontCamera", "(*)Vui lòng nhập thông tin")
         isFlag &= validation.valicationCheck(screenProduce, "tbScreen", "(*)Vui lòng nhập thông tin")
@@ -72,7 +72,7 @@ const getValueIput = (isAdd) => {
         screenProduce,
         backCameraProduce,
         frontCameraProduce);
-    
+
     return prouduce;
 }
 
@@ -113,7 +113,7 @@ const btnEdit = id => {
             getEl("imgProduce").value = produce.img;
             getEl("descProduce").value = produce.desc;
         })
-        .catch(err=>console.log(err))
+        .catch(err => console.log(err))
 }
 
 window.btnEdit = btnEdit;
@@ -121,7 +121,7 @@ window.btnEdit = btnEdit;
 const btnDelete = id => {
     produceService
         .callAPI(`ProductCapstone/${id}`, "DELETE", null)
-        .then(result => getListProduces() )
+        .then(result => getListProduces())
         .catch(err => console.log(err))
 }
 

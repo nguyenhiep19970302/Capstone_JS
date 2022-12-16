@@ -1,7 +1,7 @@
 const getELe = id => document.getElementById(id);
-export default class Validation{
+class Validation {
 
-    valicationCheck(val,errId,mess) {
+    valicationCheck(val, errId, mess) {
         if (val === "") {
             getELe(errId).style.display = "block";
             getELe(errId).innerHTML = mess;
@@ -14,14 +14,15 @@ export default class Validation{
 
     selectionCheck = function (selId, errId, mess) {
         if (getELe(selId).selectedIndex !== 0) {
-        //true
+            //true
             getELe(errId).style.display = "none";
             getELe(errId).innerHTML = "";
-        return true;
-    }
-    //false
+            return true;
+        }
+        //false
         getELe(errId).style.display = "block";
         getELe(errId).innerHTML = mess;
-    return false;
-};
+        return false;
+    };
 }
+export default Validation;

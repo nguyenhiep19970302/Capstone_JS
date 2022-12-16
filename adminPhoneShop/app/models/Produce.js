@@ -1,4 +1,4 @@
-export default class Produce {
+class Produce {
 
     constructor(_id, _name, _type, _price, _description, _image, _screen, _backCamera, _frontCamera) {
         this.id = _id;
@@ -12,3 +12,4 @@ export default class Produce {
         this.frontCamera = _frontCamera;
     }
 }
+export default Produce;
